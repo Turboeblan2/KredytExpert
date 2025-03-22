@@ -3,11 +3,11 @@ body {
     margin: 0;
     line-height: 1.6;
     color: #333;
-    background-color: #f8f9fa; /* Jasnoszary tło */
+    background-color: #f8f9fa;
     }
 
     header {
-    background-color: #007bff; /* Główny kolor: niebieski */
+    background-color: #007bff;
     color: white;
     padding: 1rem 0;
     text-align: center;
@@ -24,7 +24,7 @@ body {
     }
 
     nav a:hover {
-    background-color: #0056b3; /* Ciemniejszy niebieski na hover */
+    background-color: #0056b3;
     }
 
     main {
@@ -51,7 +51,7 @@ body {
     }
 
     .hero button {
-    background-color: #28a745; /* Zielony przycisk: akcja */
+    background-color: #28a745;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -62,7 +62,7 @@ body {
     }
 
     .hero button:hover {
-    background-color: #218838; /* Ciemniejszy zielony na hover */
+    background-color: #218838;
     }
 
     .o-nas, .oferty, .dlaczego-my, .logowanie, .rejestracja, .panel-uzytkownika, .filtry {
@@ -92,9 +92,9 @@ body {
     }
 
     footer {
-    background-color: #e9ecef; /* Jasnoszary footer */
+    background-color: #e9ecef;
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -119,7 +119,7 @@ body {
     }
 
     form button {
-    background-color: #007bff; /* Główny niebieski dla przycisków formularzy */
+    background-color: #007bff;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -141,10 +141,117 @@ body {
 
     .filtry {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1rem;
+    margin-bottom: 2rem;
     }
 
-    .filtry label, .filtry input, .filtry select, .filtry button {
-    flex: 1 1 auto;
+    .filtry label, .filtry select, .filtry input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     }
+
+    .filtry button {
+    background-color: #28a745;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
+    order: 2;
+    }
+
+    .filtry button:hover {
+    background-color: #218838;
+    }
+
+    .filtry > * {
+    order: 1;
+    }
+
+    .oferta {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .oferta h3 {
+    margin-bottom: 0.5rem;
+    color: #007bff;
+    }
+
+    .oferta p {
+    margin-bottom: 0.5rem;
+    }
+
+    .oferta button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+
+    .oferta button:hover {
+    background-color: #0056b3;
+    }
+
+    .dlaczego-my h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    }
+
+    .dlaczego-my ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+    }
+
+    .dlaczego-my li {
+    margin-bottom: 0.8rem;
+    word-wrap: break-word;
+    }
+
+    .logowanie, .rejestracja {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logowanie h2, .rejestracja h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    }
+
+    .logowanie form, .rejestracja form {
+    display: flex;
+    flex-direction: column;
+    }
+
+    .logowanie label, .rejestracja label {
+    margin-top: 1rem;
+    }
+
+    .logowanie input, .rejestracja input {
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    }
+
+    .logowanie button, .rejestracja button {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 1rem;}
