@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KredytExpert - Oferty Kredytowe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Strona główna</a>
+            <a href="/podstrony/logowanie.html">Zaloguj się</a>
+            <a href="/podstrony/rejestracja.html">Zarejestruj się</a>
+        </nav>
+    </header>
+    <main>
+        <section class="filtry">
+            <h2>Filtruj oferty</h2>
+            <label for="rodzaj">Rodzaj kredytu:</label>
+            <select id="rodzaj">
+                <option value="wszystkie">Wszystkie</option>
+                <option value="gotowkowy">Gotówkowy</option>
+                <option value="hipoteczny">Hipoteczny</option>
+            </select>
+            <label for="kwota">Kwota:</label>
+            <input type="number" id="kwota" placeholder="Kwota">
+            <label for="okres">Okres (w miesiącach):</label>
+            <input type="number" id="okres" placeholder="Okres">
+            <button id="filtruj">Filtruj</button>
+        </section>
+        <section class="lista-ofert">
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 KredytExpert</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
