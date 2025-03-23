@@ -1,4 +1,19 @@
-document.getElementById('ofertyButton').addEventListener('click', function() {
+document.getElementById('ofertyButton').addEventListener('click', function () {
     window.location.href = 'oferty.html';
-    });
-    // Tutaj możesz dodać więcej logiki JavaScript dla strony głównej, np. animacje, interakcje z elementami itp.
+});
+const chatBar = document.querySelector('.chat-bar');
+const chatContainer = document.getElementById('chat-container');
+
+chatBar.addEventListener('click', () => {
+    if (chatContainer.classList.contains('active')) {
+        chatContainer.classList.remove('active');
+        chatContainer.classList.add('closing');
+        setTimeout(() => {
+            chatContainer.classList.remove('closing');
+            chatContainer.style.display = 'none';
+        }, 300); // Opóźnij ukrycie chatbota o czas trwania animacji
+    } else {
+        chatContainer.classList.add('active');
+        chatContainer.style.display = 'block';
+    }
+});
