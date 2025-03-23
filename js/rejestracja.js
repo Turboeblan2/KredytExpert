@@ -5,35 +5,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     const nazwisko = document.getElementById('nazwisko').value;
     const email = document.getElementById('email').value;
     const haslo = document.getElementById('haslo').value;
-
-    // Wysyłanie danych na serwer
-    fetch('/register', {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-    imie: imie,
-    nazwisko: nazwisko,
-    email: email,
-    haslo: haslo,
-    }),
     })
-    .then(response => response.json())
-    .then(data => {
-    if (data.success) {
-    alert('Rejestracja pomyślna!');
-    window.location.href = 'logowanie.html'; // Przekierowanie do strony logowania
-    } else {
-    alert('Błąd rejestracji: ' + data.message);
-    }
-    })
-    .catch(error => {
-    console.error('Błąd:', error);
-    alert('Wystąpił błąd podczas rejestracji.');
-    });
-    });
-
     const chatBar = document.querySelector('.chat-bar');
     const chatContainer = document.getElementById('chat-container');
     const chatMessages = document.getElementById('chat-messages');
@@ -60,4 +32,4 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     if (event.key === 'Enter') {
     sendMessage();
     }
-    });
+    })
