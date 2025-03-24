@@ -26,6 +26,14 @@ app.post('/chat', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log('Serwer działa na porcie 3000');
+const port = process.env.PORT || 3000; // Użyj zmiennej PORT lub 3000 jako domyślny
+app.listen(port, () => {
+    console.log(`Serwer działa na porcie ${port}`);
+});
+process.on('SIGTERM', () => {
+    console.log('Otrzymano sygnał SIGTERM. Zamykam serwer...');
+    server.close(() => {
+        console.log('Serwer zamknięty.');
+        process.exit(0);
+    });
 });
