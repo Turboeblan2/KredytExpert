@@ -22,29 +22,49 @@ chatBar.addEventListener('click', () => {
     }
 });
 
-async function sendMessage(messages, model) {
+chatSend.addEventListener('click', sendMessage);
+
+chatInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+async function sendMessage() {
+    const message = chatInput.value;
+    if (!message) return;
+
+    appendMessage('user', message);
+    chatInput.value = '';
+
+    const messages = [];
+    const messageElements = chatMessages.querySelectorAll('.message');
+    messageElements.forEach((element) => {
+        const role = element.classList.contains('user') ? 'user' : 'bot';
+        messages.push({ role, content: element.textContent });
+    });
+
     try {
         const response = await fetch('http://localhost:3000/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ messages, model }),
+            body: JSON.stringify({ messages, model: 'openai/gpt-3.5-turbo' }),
         });
 
         const data = await response.json();
-        return data.content; // Zwraca odpowiedź od AI
+        appendMessage('bot', data.content); // Dodaj odpowiedź AI do historii
     } catch (error) {
         console.error('Błąd podczas wysyłania wiadomości:', error);
-        return 'Wystąpił błąd.';
+        appendMessage('bot', 'Wystąpił błąd.');
     }
 }
 
-// Przykład użycia
-const messages = [
-    { role: 'user', content: 'Napisz krótkie opowiadanie.' },
-];
-const model = 'openai/gpt-3.5-turbo'; // Wybierz model z OpenRouter
-
-sendMessage(messages, model)
-    .then(response => console.log(response));
+function appendMessage(sender, message) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message', sender);
+    messageElement.textContent = message;
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
