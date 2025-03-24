@@ -22,4 +22,29 @@ chatBar.addEventListener('click', () => {
     }
 });
 
- 
+async function sendMessage(messages, model) {
+    try {
+        const response = await fetch('http://localhost:3000/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ messages, model }),
+        });
+
+        const data = await response.json();
+        return data.content; // Zwraca odpowiedź od AI
+    } catch (error) {
+        console.error('Błąd podczas wysyłania wiadomości:', error);
+        return 'Wystąpił błąd.';
+    }
+}
+
+// Przykład użycia
+const messages = [
+    { role: 'user', content: 'Napisz krótkie opowiadanie.' },
+];
+const model = 'openai/gpt-3.5-turbo'; // Wybierz model z OpenRouter
+
+sendMessage(messages, model)
+    .then(response => console.log(response));
