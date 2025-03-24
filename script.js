@@ -1,4 +1,7 @@
 
+document.getElementById('ofertyButton').addEventListener('click', function() {
+    window.location.href = '/podstrony/oferty.html';
+    });
 const chatBar = document.querySelector('.chat-bar');
 const chatContainer = document.getElementById('chat-container');
 const chatMessages = document.getElementById('chat-messages');
