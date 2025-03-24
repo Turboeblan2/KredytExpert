@@ -22,42 +22,4 @@ chatBar.addEventListener('click', () => {
     }
 });
 
-chatSend.addEventListener('click', sendMessage);
-
-chatInput.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
-});
-
-async function sendMessage() {
-    const message = chatInput.value;
-    if (!message) return;
-
-    appendMessage('user', message);
-    chatInput.value = '';
-
-    try {
-        const response = await fetch('http://localhost:3000/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message }),
-        });
-
-        const data = await response.json();
-        appendMessage('bot', data.message);
-    } catch (error) {
-        console.error('Błąd podczas wysyłania wiadomości:', error);
-        appendMessage('bot', 'Wystąpił błąd.');
-    }
-}
-
-function appendMessage(sender, message) {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message', sender);
-    messageElement.textContent = message;
-    chatMessages.appendChild(messageElement);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+ 
