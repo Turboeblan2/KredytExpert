@@ -33,7 +33,12 @@ app.post('/chat', async (req, res) => {
             }
         );
 
-        res.json(response.data.choices[0].message);
+        // Dodajemy sprawdzenie, czy response.data.choices istnieje i nie jest puste
+        if (response.data && response.data.choices && response.data.choices.length > 0) {
+            res.json(response.data.choices[0].message);
+        } else {
+            res.status(500).json({ error: 'Brak odpowiedzi z OpenRouter API.' });
+        }
     } catch (error) {
         console.error('Błąd OpenRouter API:', error);
         if (error.response) {
