@@ -43,7 +43,7 @@ app.post('/chat', async (req, res) => {
     }
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080; // Używamy zmiennej środowiskowej PORT
 app.listen(port, () => {
     console.log(`Serwer działa na porcie ${port}`);
 });

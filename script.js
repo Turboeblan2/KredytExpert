@@ -45,7 +45,7 @@ async function sendMessage() {
     });
 
     try {
-        const response = await fetch('http://localhost:3000/chat', {
+        const response = await fetch(`${window.location.origin}/chat`, { // Używamy window.location.origin
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,8 +53,12 @@ async function sendMessage() {
             body: JSON.stringify({ messages, model: 'openai/gpt-3.5-turbo' }),
         });
 
+        if (!response.ok) {
+            throw new Error(`Błąd HTTP: ${response.status}`);
+        }
+
         const data = await response.json();
-        appendMessage('bot', data.content); // Dodaj odpowiedź AI do historii
+        appendMessage('bot', data.content);
     } catch (error) {
         console.error('Błąd podczas wysyłania wiadomości:', error);
         appendMessage('bot', 'Wystąpił błąd.');
