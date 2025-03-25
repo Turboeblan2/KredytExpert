@@ -45,13 +45,14 @@ async function sendMessage() {
     });
 
     try {
-        const response = await fetch(`${window.location.origin}/chat`, { // Używamy window.location.origin
+        var response = await fetch(`${window.location.origin}/chat`, { // Używamy window.location.origin
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ messages, model: 'openai/gpt-3.5-turbo' }),
         });
+
         if (!response.ok) {
             throw new Error(`Błąd HTTP: ${response.status}`);
         }
