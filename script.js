@@ -52,7 +52,7 @@ async function sendMessage() {
             },
             body: JSON.stringify({ messages, model: 'openai/gpt-3.5-turbo' }),
         });
-
+        console.log(response);
         if (!response.ok) {
             throw new Error(`Błąd HTTP: ${response.status}`);
         }
