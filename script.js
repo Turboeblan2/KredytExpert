@@ -50,9 +50,8 @@ async function sendMessage() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ messages, model: 'openai/gpt-3.5-turbo' }),
+            body: JSON.stringify({ messages, model: 'anthropic/claude-2' }),
         });
-        console.log(response);
         if (!response.ok) {
             throw new Error(`Błąd HTTP: ${response.status}`);
         }
